@@ -1,14 +1,21 @@
+const { WORLD_WIDTH, WORLD_HEIGHT } = require('../config');
 let id = 1
-const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
-export function generatePlayer() {
-    const color = colors[Math.floor(Math.random() * colors.length)];
+function generatePlayer() {
+    const width = 30;
+    const height = 30;
+    const x = Math.floor(Math.random() * (WORLD_WIDTH - width));
+    const y = Math.floor(Math.random() * (WORLD_HEIGHT - height));
+
     const player = {
         id: id++,
-        x: 100,
-        y: 200,
-        width: 50,
-        height: 50,
-        color,
+        x,
+        y,
+        width,
+        height,
     }
     return player
+}
+
+module.exports = {
+    generatePlayer
 }
