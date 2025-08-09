@@ -28,7 +28,7 @@ wss.on('connection', (ws) => {
 
     // 玩家断开并广播
     ws.on('close', () => {
-        players.splice(players.findIndex(p => p.id !== ws.player.id), 1)
+        players.splice(players.findIndex(p => p.id === ws.player.id), 1)
         wss.clients.forEach(client => {
             client.send(sendJSON('updatePlayers', players));
         });
@@ -55,6 +55,7 @@ wss.on('connection', (ws) => {
                     player.x = Math.min(WORLD_WIDTH - player.width, player.x + step);
                     break;
             }
+            
             wss.clients.forEach(client => {
                 client.send(sendJSON('updatePlayers', players));
             });
