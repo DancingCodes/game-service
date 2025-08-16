@@ -82,19 +82,19 @@ wss.on('connection', (ws) => {
 
             switch (data) {
                 case 'w':
-                    player.y = Math.max(0, player.y - player.speed);
+                    player.y = Math.max(player.width / 2, player.y - player.speed);
                     player.direction = data
                     break;
                 case 'a':
-                    player.x = Math.max(0, player.x - player.speed);
+                    player.x = Math.max(player.width / 2, player.x - player.speed);
                     player.direction = data
                     break;
                 case 's':
-                    player.y = Math.min(WORLD.HEIGHT - player.height, player.y + player.speed);
+                    player.y = Math.min(WORLD.HEIGHT - player.height / 2, player.y + player.speed);
                     player.direction = data
                     break;
                 case 'd':
-                    player.x = Math.min(WORLD.WIDTH - player.width, player.x + player.speed);
+                    player.x = Math.min(WORLD.WIDTH - player.width / 2, player.x + player.speed);
                     player.direction = data
                     break;
             }
