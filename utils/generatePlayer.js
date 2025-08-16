@@ -1,17 +1,15 @@
-const { WORLD_WIDTH, WORLD_HEIGHT } = require('../config');
+const { WORLD, PLAYER } = require('../config');
 let id = 1
 function generatePlayer() {
-    const width = 30;
-    const height = 30;
-    const x = Math.floor(Math.random() * (WORLD_WIDTH - width));
-    const y = Math.floor(Math.random() * (WORLD_HEIGHT - height));
-
     const player = {
         id: id++,
-        x,
-        y,
-        width,
-        height,
+        x: Math.floor(PLAYER.WIDTH / 2 + Math.random() * (WORLD.WIDTH - PLAYER.WIDTH)),
+        y: Math.floor(PLAYER.HEIGHT / 2 + Math.random() * (WORLD.HEIGHT - PLAYER.HEIGHT)),
+        width: PLAYER.WIDTH,
+        height: PLAYER.HEIGHT,
+        direction: PLAYER.DIRECTION,
+        speed: PLAYER.SPEED,
+        isAlive: true
     }
     return player
 }
