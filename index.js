@@ -41,7 +41,7 @@ setInterval(() => {
     wss.clients.forEach(client => {
         client.send(sendJSON('renderGame', game));
     });
-}, 16);
+}, 30);
 
 wss.on('connection', (ws) => {
     console.log('一个玩家进来了');
